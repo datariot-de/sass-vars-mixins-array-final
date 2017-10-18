@@ -1,0 +1,33 @@
+@mixin horizontal-list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+
+  li {
+    display: inline-block;
+    list-style: none;
+  }
+}
+
+@mixin horizontal-list-alternative {
+  display: block;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+
+  li {
+    display: inline-block;
+    list-style: none;
+  }
+}
+
+@mixin icon-sprite($x: 0, $y: 0) {
+  display: block;
+  width:  64px;
+  height: 64px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-image: url('../images/sprite.svg');
+  background-position: $x $y;
+}

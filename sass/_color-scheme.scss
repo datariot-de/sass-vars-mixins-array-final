@@ -1,0 +1,64 @@
+/* Example usage of an array */
+
+$abc: (
+  ("class-a", #123, #456),
+  ("class-b", #789, #abc),
+  ("class-c", #def, #000)
+);
+
+@each $current-class in $abc {
+
+  $classname:       nth($current-class, 1);
+  $primary-color:   nth($current-class, 2);
+  $bg-color:        nth($current-class, 3);
+
+  /*
+  the #{...} syntax is used, so that the SASS compiler can concatenate the
+  string and the variable's value without an error
+  */
+  #{"." + $classname} {
+    color: $primary-color;
+    background-color: $bg-color;
+
+    a {
+      color: mix(black, $bg-color, 20%);
+    }
+  }
+}
+
+/*
+
+Now do the same with an array $sports.
+
+It shall also contain three arrays, where the first entry
+is one of the classnames "basketball", "baseball" and "soccer"
+and the second and third entries are their primary font color and
+theire background colors.
+
+* For Basketball  the colors are #ff6f00 and #efbd7d
+* For Baseball    the colors are #257aa5 and #cce8ea
+* For Soccer      the colors are #43a047 and #bddbbd
+
+*/
+
+$sports: (
+  ("basketball", #ff6f00, #efbd7d),
+  ("baseball",   #257aa5, #cce8ea),
+  ("soccer",     #43a047, #bddbbd)
+);
+
+@each $current-sport in $sports {
+
+  $sport:   nth($current-sport, 1);
+  $primary-color:   nth($current-sport, 2);
+  $bg-color: nth($current-sport, 3);
+
+  #{"." + $sport} {
+    color: $primary-color;
+    background-color: $bg-color;
+
+    a {
+      color: mix(black, $bg-color, 20%);
+    }
+  }
+}
